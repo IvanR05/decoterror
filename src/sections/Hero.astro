@@ -1,0 +1,243 @@
+<section>
+    <div class="animate-fade-in-up">
+        <h1>DECOTERROR</h1>
+        <h2>Decoración artesanal de terror orientada a eventos</h2>
+
+        <a href="https://www.instagram.com/decoterror/" target="_blank" class="instagram-btn hover:animate-tada">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="#E1306C"/>
+            </svg>
+            ¡Síguenos en nuestras redes sociales!
+        </a>
+    </div>
+
+    <img src="/fondoaside.webp" alt="Decoración terrorífica" class="animate-blurred-fade-in md:animate-delay-200 md:animate-duration-500" />
+
+    <footer class="animate-fade-in animate-delay-500">
+        <div class="scroll-arrow">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 10L12 15L17 10" stroke="#ff8c00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </footer>
+    
+</section>
+
+<script>
+    const scrollArrow = document.querySelector('.scroll-arrow');
+    
+    if (scrollArrow) {
+        scrollArrow.addEventListener('click', () => {
+            const aboutSection = document.getElementById('about-me');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            } else {
+                window.scrollBy({ 
+                    top: window.innerHeight, 
+                    behavior: 'smooth' 
+                });
+            }
+        });
+    }
+</script>
+
+<style>
+    section {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+       
+        height: 100vh;
+        width: 100vw;
+      
+        padding: 3%;
+        box-sizing: border-box;
+
+        img {
+            width: 55%;
+        }
+    }
+
+    footer {
+        position: absolute;
+        bottom: 3rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        cursor: pointer;
+    }
+
+    .scroll-arrow {
+        animation: bounce 2s ease-in-out infinite;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .scroll-arrow svg {
+        filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.6));
+    }
+
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(10px);
+        }
+    }
+
+    /* Subtle dark overlay for better text contrast */
+    section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.25);
+        pointer-events: none;
+    }
+
+    h1 {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        color: rgb(205 37 16);
+        text-shadow:
+            0 0 20px rgba(205, 37, 16, 0.6),
+            4px 4px 8px rgba(101, 0, 0, 0.9),
+            8px 10px 10px rgba(0, 0, 0, 0.8);
+        font-family: "Nosifer", "Metal Mania", system-ui;
+        margin: 0;
+        animation: subtleGlow 3s ease-in-out infinite;
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes subtleGlow {
+        0%,
+        100% {
+            text-shadow:
+                0 0 20px rgba(205, 37, 16, 0.6),
+                4px 4px 8px rgba(101, 0, 0, 0.9),
+                8px 10px 10px rgba(0, 0, 0, 0.8);
+        }
+        50% {
+            text-shadow:
+                0 0 30px rgba(205, 37, 16, 0.8),
+                4px 4px 8px rgba(101, 0, 0, 0.9),
+                8px 10px 10px rgba(0, 0, 0, 0.8);
+        }
+    }
+
+    h2 {
+        font-size: clamp(1.2rem, 4vw, 2rem);
+        color: white;
+        text-shadow:
+            2px 2px 4px rgba(62, 15, 15, 0.989),
+            8px 10px 10px rgba(62, 15, 15, 0.989);
+        font-family: "Metal Mania", system-ui;
+        margin: 0;
+        position: relative;
+        z-index: 1;
+    }
+
+    .instagram-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: white;
+        color: #333;
+        padding: 0.875rem 1.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: clamp(0.7rem, 2.5vw, 1.1rem);
+        font-weight: 600;
+        margin-top: 1.5rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 1;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+
+    .instagram-btn:hover {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        background: #f9f9f9;
+    }
+
+    .instagram-btn svg {
+        flex-shrink: 0;
+    }
+
+    .info-wrapper {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+    }
+
+    .info-wrapper p {
+        font-size: 1.2rem;
+        color: white;
+        font-weight: 600;
+        margin: 0;
+        padding: 0.8rem 1.5rem;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 12px;
+        border: 2px solid rgba(255, 140, 0, 0.4);
+        backdrop-filter: blur(5px);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Mobile responsive styles */
+    @media (max-width: 768px) {
+        section {
+            flex-direction: column;
+            gap: 2rem;
+            height: 100vh;
+            justify-content: flex-start;
+            padding: 5% 5% 4rem;
+        }
+
+        section img {
+            width: 100%;
+            max-width: 500px;
+            min-height: 300px;
+            order: -1; /* This moves the image to the top */
+        }
+
+        div {
+            order: 1; /* This keeps the text below the image */
+            text-align: center;
+            padding: 0 1rem;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: clamp(1.2rem, 9vw, 3rem);
+            white-space: nowrap;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        h2 {
+            font-size: clamp(0.7rem, 4.5vw, 1.4rem);
+            margin-top: 1rem;
+            padding: 0 0.5rem;
+        }
+
+        footer {
+            bottom: 1rem;
+        }
+    }
+
+</style>
