@@ -1,8 +1,36 @@
+---
+import projects2024 from '../data/projects/2024.json';
+import projects2025 from '../data/projects/2025.json';
+import projects2023 from '../data/projects/2023.json';
+---
+
 <article class="proyectos-section">
     <h2>Mis proyectos</h2>
     <div class="year-buttons">
         <button class="year-btn active" data-year="2025">2025</button>
         <button class="year-btn" data-year="2024">2024</button>
+        <!-- <button class="year-btn" data-year="2023">2023</button> -->
+    </div>
+    <div class="countdown-section" id="countdown-2025">
+        <p class="countdown-text">¡ Ven a visitarnos para descubrir los nuevos proyectos de este año !</p>
+        <div class="countdown-timer">
+            <div class="time-unit">
+                <span class="time-value" id="days">00</span>
+                <span class="time-label">Días</span>
+            </div>
+            <div class="time-unit">
+                <span class="time-value" id="hours">00</span>
+                <span class="time-label">Horas</span>
+            </div>
+            <div class="time-unit">
+                <span class="time-value" id="minutes">00</span>
+                <span class="time-label">Minutos</span>
+            </div>
+            <div class="time-unit">
+                <span class="time-value" id="seconds">00</span>
+                <span class="time-label">Segundos</span>
+            </div>
+        </div>
     </div>
     <div class="projects-grid">
         <!-- Project cards will be injected here by JavaScript -->
@@ -10,132 +38,62 @@
 
 </article>
 
-<script>
-    const projects2025 = [
-        {
-            title: "Area Restringida Con Soldado Y Mascara",
-            image: "/projects/area-restringida-con-soldado-y-mascara.jpg"
-        },
-        {
-            title: "Bunker De Superficie Con Instalaciones",
-            image: "/projects/bunker-de-superficie-con-instalaciones.jpg"
-        },
-        {
-            title: "Esqueleto En Escalera",
-            image: "/projects/esqueleto-en-escalera.jpg"
-        },
-        {
-            title: "Esqueleto En Tabla De Tortura Con Palanca De Apriete",
-            image: "/projects/esqueleto-en-tabla-de-tortura-con-palanca-de-apriete.jpg"
-        },
-        {
-            title: "Esqueleto Enjaulado",
-            image: "/projects/esqueleto-enjaulado.jpg"
-        },
-        {
-            title: "Estrella Sátanica De Led",
-            image: "/projects/estrella-sátanica-de-led-2.jpg"
-        },
-        {
-            title: "Figura Atada Estructura",
-            image: "/projects/figura-atada-estructura-x-2.jpg"
-        },
-        {
-            title: "Gato Enjaulado",
-            image: "/projects/gato-enjaulado.jpg"
-        },
-        {
-            title: "Loco En Silla De Ruedas",
-            image: "/projects/loco-en-silla-de-ruedas.jpg"
-        },
-        {
-            title: "Niña Asesina Con Gato Enjaulado",
-            image: "/projects/niña-asesina-con-gato-enjaulado.jpg"
-        },
-        {
-            title: "Niña En Columpio",
-            image: "/projects/niña-en-columpio.jpg"
-        },
-        {
-            title: "Niña Pozo",
-            image: "/projects/niña-pozo.jpg"
-        },
-        {
-            title: "Noria De Tortura Con Tabla De Pinchos Y Rueda De Agua Antigua",
-            image: "/projects/noria-de-tortura-con-tabla-de-pinchos-y-rueda-de-agua-antigua.jpg"
-        },
-    ];
+<script define:vars={{ projects2023, projects2024, projects2025 }}>
+    let currentYear = new Date().getFullYear();
 
-    const projects2024 = [
-        {
-            title: "Area Restringida Con Soldado Y Mascara",
-            image: "/projects/area-restringida-con-soldado-y-mascara.jpg"
-        },
-        {
-            title: "Bunker De Superficie Con Instalaciones",
-            image: "/projects/bunker-de-superficie-con-instalaciones.jpg"
-        },
-        {
-            title: "Esqueleto En Escalera",
-            image: "/projects/esqueleto-en-escalera.jpg"
-        },
-        {
-            title: "Esqueleto En Tabla De Tortura Con Palanca De Apriete",
-            image: "/projects/esqueleto-en-tabla-de-tortura-con-palanca-de-apriete.jpg"
-        },
-        {
-            title: "Esqueleto Enjaulado",
-            image: "/projects/esqueleto-enjaulado.jpg"
-        },
-        {
-            title: "Estrella Sátanica De Led",
-            image: "/projects/estrella-sátanica-de-led-2.jpg"
-        },
-        {
-            title: "Figura Atada Estructura",
-            image: "/projects/figura-atada-estructura-x-2.jpg"
-        },
-        {
-            title: "Gato Enjaulado",
-            image: "/projects/gato-enjaulado.jpg"
-        },
-        {
-            title: "Loco En Silla De Ruedas",
-            image: "/projects/loco-en-silla-de-ruedas.jpg"
-        },
-        {
-            title: "Niña Asesina Con Gato Enjaulado",
-            image: "/projects/niña-asesina-con-gato-enjaulado.jpg"
-        },
-        {
-            title: "Niña En Columpio",
-            image: "/projects/niña-en-columpio.jpg"
-        },
-        {
-            title: "Niña Pozo",
-            image: "/projects/niña-pozo.jpg"
-        },
-        {
-            title: "Noria De Tortura Con Tabla De Pinchos Y Rueda De Agua Antigua",
-            image: "/projects/noria-de-tortura-con-tabla-de-pinchos-y-rueda-de-agua-antigua.jpg"
-        },
-    ];
+    // Countdown function
+    function updateCountdown() {
+        const targetDate = new Date('2025-10-31T19:00:00+01:00').getTime();
+        const now = new Date().getTime();
+        const distance = targetDate - now;
 
-    let currentYear = 2025;
+        if (distance < 0) {
+            document.getElementById('days').textContent = '00';
+            document.getElementById('hours').textContent = '00';
+            document.getElementById('minutes').textContent = '00';
+            document.getElementById('seconds').textContent = '00';
+            return;
+        }
 
-    function renderProjects(year: number) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    // Update countdown every second
+    let countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown(); // Initial call
+
+    function renderProjects(year) {
         const projectsGrid = document.querySelector('.projects-grid');
+        const countdownSection = document.getElementById('countdown-2025');
         if (!projectsGrid) return;
         
+        // Show/hide countdown based on year
+        if (countdownSection) {
+            countdownSection.style.display = year === 2025 ? 'block' : 'none';
+        }
+
         projectsGrid.innerHTML = '';
-        
-        const projectsArray = year === 2025 ? projects2025 : projects2024;
-        
-        projectsArray.forEach(project => {
+
+        const projectsMap = {
+            2025: projects2025,
+            2024: projects2024,
+            2023: projects2023
+        };
+
+
+        projectsMap[year]?.forEach(project => {
             let div = document.createElement('div');
             div.className = 'project-card';
             div.innerHTML = `
-                <img src="${project.image}" alt="${project.title}">
+                <img src="${project.image}" alt="${project.title}" loading="lazy">
                 <h3>${project.title}</h3>
             `;
             projectsGrid.appendChild(div);
@@ -146,20 +104,19 @@
     renderProjects(currentYear);
 
     // Add event listeners to year buttons
-        document.querySelectorAll('.year-btn').forEach(button => {
-            const btn = button as HTMLButtonElement;
-            btn.addEventListener('click', () => {
-                const year = parseInt(btn.dataset.year || '2025');
-                currentYear = year;
-                
-                // Update active state
-                document.querySelectorAll('.year-btn').forEach(b => (b as HTMLButtonElement).classList.remove('active'));
-                btn.classList.add('active');
-                
-                // Render projects for selected year
-                renderProjects(year);
-            });
+    document.querySelectorAll('.year-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const year = parseInt(button.dataset.year || '2025');
+            currentYear = year;
+            
+            // Update active state
+            document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Render projects for selected year
+            renderProjects(year);
         });
+    });
     
 </script>
 
@@ -205,6 +162,59 @@
         box-shadow: 0 0 20px rgba(241, 48, 0, 0.5);
     }
 
+    .countdown-section {
+        text-align: center;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: rgb(27, 27, 27);
+        border-radius: 12px;
+        border: 2px solid #f13000;
+        max-width: 1000px;
+        width: 95%;
+    }
+
+    .countdown-text {
+        font-size: 2rem;
+        color: #cd2f07;
+        margin-bottom: 1.5rem;
+        font-family: 'Metal Mania', cursive;
+        letter-spacing: 1.2px;
+        white-space: nowrap;
+    }
+
+    .countdown-timer {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .time-unit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .time-value {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #ffffff;
+        background-color: rgba(241, 48, 0, 0.2);
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        border: 2px solid #f13000;
+        min-width: 80px;
+        box-shadow: 0 0 15px rgba(241, 48, 0, 0.3);
+    }
+
+    .time-label {
+        font-size: 1rem;
+        color: #ffffff;
+        margin-top: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
     .proyectos-section :global(.projects-grid) {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -214,13 +224,13 @@
     .proyectos-section :global(.project-card) {
         background-color: rgb(27, 27, 27);
         border-radius: 8px;
-        border: 3px solid transparent;
+        border: 2px solid rgb(147, 40, 40);
         padding: 1rem;
         text-align: center;
         filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.815));
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transform: translateY(0) rotate(0deg);
-        cursor: pointer;
+        /*cursor: pointer;*/
         min-height: 350px;
         display: flex;
         flex-direction: column;
@@ -239,7 +249,7 @@
 
     .proyectos-section :global(.project-card:hover) {
         transform: translateY(-12px) rotate(-1deg);
-        border: 3px dashed red;
+        border: 2px solid red;
         border-color: red;
     }
 
@@ -279,6 +289,31 @@
         .year-btn {
             padding: 0.6rem 1.5rem;
             font-size: 1rem;
+        }
+
+        .countdown-section {
+            padding: 1.5rem;
+            margin: 1.5rem 1rem;
+        }
+
+        .countdown-text {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            white-space: normal;
+        }
+
+        .countdown-timer {
+            gap: 1rem;
+        }
+
+        .time-value {
+            font-size: 2rem;
+            padding: 0.75rem 1rem;
+            min-width: 60px;
+        }
+
+        .time-label {
+            font-size: 0.85rem;
         }
 
         .proyectos-section :global(.projects-grid) {
@@ -324,6 +359,31 @@
         .year-btn {
             padding: 0.75rem 1.5rem;
             font-size: 1rem;
+        }
+
+        .countdown-section {
+            padding: 1rem;
+            margin: 1rem 0.5rem;
+        }
+
+        .countdown-text {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            white-space: normal;
+        }
+
+        .countdown-timer {
+            gap: 0.75rem;
+        }
+
+        .time-value {
+            font-size: 1.5rem;
+            padding: 0.5rem 0.75rem;
+            min-width: 50px;
+        }
+
+        .time-label {
+            font-size: 0.75rem;
         }
 
         .proyectos-section :global(.projects-grid) {
