@@ -1,57 +1,165 @@
 <article class="proyectos-section">
     <h2>Mis proyectos</h2>
+    <div class="year-buttons">
+        <button class="year-btn active" data-year="2025">2025</button>
+        <button class="year-btn" data-year="2024">2024</button>
+    </div>
     <div class="projects-grid">
-        <div class="project-card">
-            <div class="project-image-wrapper" style="position:relative; min-height:250px; border-radius:8px; overflow:hidden;">
-                <img src="/projects/fondo-niña.jpg" alt="Fondo Niña" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
-                <img src="/projects/niña-pozo-nobg.png" alt="Niña del Pozo" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); max-width:70%; max-height:85%; object-fit:contain;">
-            </div>
-            <h3>Niña del Pozo</h3>
-            <p>Un proyecto que combina elementos de terror y fantasía, creando una atmósfera inquietante y mágica al mismo tiempo.</p>
-        </div>
-        <div class="project-card">
-            <img src="/projects/restricted-area.jpg" alt="Proyecto 2">
-            <h3>Area Restringida con soldado y mascara</h3>
-            <p>Creación de una zona de acceso restringido con temática de seguridad, incluyendo un soldado de cartón y efectos de sonido envolventes.</p>
-        </div>
-        <div class="project-card">
-            <img src="/proyecto3.jpg" alt="Proyecto 3">
-            <h3>Casa del Terror</h3>
-            <p>Diseño y montaje de una casa del terror para eventos comunitarios, con diferentes habitaciones y sorpresas aterradoras.</p>
-        </div>
+        <!-- Project cards will be injected here by JavaScript -->
     </div>
 
 </article>
 
 <script>
-    const projects = [
+    const projects2025 = [
         {
-            title: "Niña del Pozo",
-            description: "Un proyecto que combina elementos de terror y fantasía, creando una atmósfera inquietante y mágica al mismo tiempo.",
-            image: "/projects/niña-pozo-nobg.png"
+            title: "Area Restringida Con Soldado Y Mascara",
+            image: "/projects/area-restringida-con-soldado-y-mascara.jpg"
         },
         {
-            title: "Area Restringida con soldado y mascara",
-            description: "Creación de una zona de acceso restringido con temática de seguridad, incluyendo un soldado de cartón y efectos de sonido envolventes.",
-            image: "/projects/restricted-area.jpg"
+            title: "Bunker De Superficie Con Instalaciones",
+            image: "/projects/bunker-de-superficie-con-instalaciones.jpg"
         },
         {
-            title: "Casa del Terror",
-            description: "Diseño y montaje de una casa del terror para eventos comunitarios, con diferentes habitaciones y sorpresas aterradoras.",
-            image: "/proyecto3.jpg"
-        }
+            title: "Esqueleto En Escalera",
+            image: "/projects/esqueleto-en-escalera.jpg"
+        },
+        {
+            title: "Esqueleto En Tabla De Tortura Con Palanca De Apriete",
+            image: "/projects/esqueleto-en-tabla-de-tortura-con-palanca-de-apriete.jpg"
+        },
+        {
+            title: "Esqueleto Enjaulado",
+            image: "/projects/esqueleto-enjaulado.jpg"
+        },
+        {
+            title: "Estrella Sátanica De Led",
+            image: "/projects/estrella-sátanica-de-led-2.jpg"
+        },
+        {
+            title: "Figura Atada Estructura",
+            image: "/projects/figura-atada-estructura-x-2.jpg"
+        },
+        {
+            title: "Gato Enjaulado",
+            image: "/projects/gato-enjaulado.jpg"
+        },
+        {
+            title: "Loco En Silla De Ruedas",
+            image: "/projects/loco-en-silla-de-ruedas.jpg"
+        },
+        {
+            title: "Niña Asesina Con Gato Enjaulado",
+            image: "/projects/niña-asesina-con-gato-enjaulado.jpg"
+        },
+        {
+            title: "Niña En Columpio",
+            image: "/projects/niña-en-columpio.jpg"
+        },
+        {
+            title: "Niña Pozo",
+            image: "/projects/niña-pozo.jpg"
+        },
+        {
+            title: "Noria De Tortura Con Tabla De Pinchos Y Rueda De Agua Antigua",
+            image: "/projects/noria-de-tortura-con-tabla-de-pinchos-y-rueda-de-agua-antigua.jpg"
+        },
     ];
 
-    projects.forEach(project => {
-        let div = document.createElement('div');
-        div.className = 'project-card';
-        div.innerHTML = `
-            <img src="${project.image}" alt="${project.title}">
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-        `;
-        document.querySelector('.projects-grid')?.appendChild(div);
-    });
+    const projects2024 = [
+        {
+            title: "Area Restringida Con Soldado Y Mascara",
+            image: "/projects/area-restringida-con-soldado-y-mascara.jpg"
+        },
+        {
+            title: "Bunker De Superficie Con Instalaciones",
+            image: "/projects/bunker-de-superficie-con-instalaciones.jpg"
+        },
+        {
+            title: "Esqueleto En Escalera",
+            image: "/projects/esqueleto-en-escalera.jpg"
+        },
+        {
+            title: "Esqueleto En Tabla De Tortura Con Palanca De Apriete",
+            image: "/projects/esqueleto-en-tabla-de-tortura-con-palanca-de-apriete.jpg"
+        },
+        {
+            title: "Esqueleto Enjaulado",
+            image: "/projects/esqueleto-enjaulado.jpg"
+        },
+        {
+            title: "Estrella Sátanica De Led",
+            image: "/projects/estrella-sátanica-de-led-2.jpg"
+        },
+        {
+            title: "Figura Atada Estructura",
+            image: "/projects/figura-atada-estructura-x-2.jpg"
+        },
+        {
+            title: "Gato Enjaulado",
+            image: "/projects/gato-enjaulado.jpg"
+        },
+        {
+            title: "Loco En Silla De Ruedas",
+            image: "/projects/loco-en-silla-de-ruedas.jpg"
+        },
+        {
+            title: "Niña Asesina Con Gato Enjaulado",
+            image: "/projects/niña-asesina-con-gato-enjaulado.jpg"
+        },
+        {
+            title: "Niña En Columpio",
+            image: "/projects/niña-en-columpio.jpg"
+        },
+        {
+            title: "Niña Pozo",
+            image: "/projects/niña-pozo.jpg"
+        },
+        {
+            title: "Noria De Tortura Con Tabla De Pinchos Y Rueda De Agua Antigua",
+            image: "/projects/noria-de-tortura-con-tabla-de-pinchos-y-rueda-de-agua-antigua.jpg"
+        },
+    ];
+
+    let currentYear = 2025;
+
+    function renderProjects(year: number) {
+        const projectsGrid = document.querySelector('.projects-grid');
+        if (!projectsGrid) return;
+        
+        projectsGrid.innerHTML = '';
+        
+        const projectsArray = year === 2025 ? projects2025 : projects2024;
+        
+        projectsArray.forEach(project => {
+            let div = document.createElement('div');
+            div.className = 'project-card';
+            div.innerHTML = `
+                <img src="${project.image}" alt="${project.title}">
+                <h3>${project.title}</h3>
+            `;
+            projectsGrid.appendChild(div);
+        });
+    }
+
+    // Initial render
+    renderProjects(currentYear);
+
+    // Add event listeners to year buttons
+        document.querySelectorAll('.year-btn').forEach(button => {
+            const btn = button as HTMLButtonElement;
+            btn.addEventListener('click', () => {
+                const year = parseInt(btn.dataset.year || '2025');
+                currentYear = year;
+                
+                // Update active state
+                document.querySelectorAll('.year-btn').forEach(b => (b as HTMLButtonElement).classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Render projects for selected year
+                renderProjects(year);
+            });
+        });
     
 </script>
 
@@ -68,22 +176,55 @@
         color: #ffffff;
     }
 
+    .year-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .year-btn {
+        padding: 0.75rem 2rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        background-color: rgb(27, 27, 27);
+        color: #ffffff;
+        border: 2px solid #f13000;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .year-btn:hover {
+        background-color: #f13000;
+        transform: translateY(-3px);
+    }
+
+    .year-btn.active {
+        background-color: #f13000;
+        box-shadow: 0 0 20px rgba(241, 48, 0, 0.5);
+    }
+
     .proyectos-section :global(.projects-grid) {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
+        gap: 2.5rem;
     }
 
     .proyectos-section :global(.project-card) {
         background-color: rgb(27, 27, 27);
         border-radius: 8px;
-        border-color: red;
+        border: 3px solid transparent;
         padding: 1rem;
         text-align: center;
         filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.815));
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transform: translateY(0) rotate(0deg);
         cursor: pointer;
+        min-height: 350px;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
     }
 
     .proyectos-section :global(.project-card img) {
@@ -99,19 +240,111 @@
     .proyectos-section :global(.project-card:hover) {
         transform: translateY(-12px) rotate(-1deg);
         border: 3px dashed red;
+        border-color: red;
     }
 
     .proyectos-section :global(.project-card:hover img) {
         transform: scale(1.05);
     }
 
+    .proyectos-section :global(.project-card:hover h3) {
+        color: #ff3d0d;
+    }
+
     .proyectos-section :global(.project-card h3) {
         margin: 1rem 0px;
         color: #f13000;
+        min-height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .proyectos-section :global(.project-card p) {
-        font-size: 1rem;
-        line-height: 1.5;
+    /* Responsive design for mobile */
+    @media (max-width: 768px) {
+        .proyectos-section {
+            padding: 1.5rem 1rem;
+        }
+
+        .proyectos-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .year-buttons {
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .year-btn {
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+        }
+
+        .proyectos-section :global(.projects-grid) {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .proyectos-section :global(.project-card) {
+            padding: 0.875rem;
+        }
+
+        .proyectos-section :global(.project-card img) {
+            max-height: 200px;
+        }
+
+        .proyectos-section :global(.project-card h3) {
+            font-size: 1rem;
+            margin: 0.75rem 0px;
+        }
+
+        .proyectos-section :global(.project-card p) {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .proyectos-section {
+            padding: 1rem 0.75rem;
+        }
+
+        .proyectos-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .year-buttons {
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding: 0 1rem;
+        }
+
+        .year-btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+        }
+
+        .proyectos-section :global(.projects-grid) {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .proyectos-section :global(.project-card) {
+            padding: 0.75rem;
+        }
+
+        .proyectos-section :global(.project-card img) {
+            max-height: 180px;
+        }
+
+        .proyectos-section :global(.project-card h3) {
+            font-size: 0.95rem;
+            margin: 0.5rem 0px;
+        }
+
+        .proyectos-section :global(.project-card:hover) {
+            transform: translateY(-8px) rotate(-1deg);
+        }
     }
 </style>

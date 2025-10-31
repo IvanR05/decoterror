@@ -42,4 +42,46 @@
         font-size: 1.4rem;
     }
 
+    /* Responsive design for mobile */
+    @media (max-width: 768px) {
+        #about-me {
+            flex-direction: column;
+            padding: 40px 20px;
+        }
+
+        img {
+            width: 250px;
+            margin-right: 0;
+            margin-bottom: 30px;
+        }
+
+        #about-me p {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        #about-me p span {
+            font-size: 1.2rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #about-me {
+            padding: 30px 15px;
+        }
+
+        img {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        #about-me p {
+            font-size: 0.95rem;
+        }
+
+        #about-me p span {
+            font-size: 1.1rem;
+        }
+    }
+
 </style>
