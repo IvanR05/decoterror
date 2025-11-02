@@ -13,6 +13,12 @@
             </svg>
             ¡Síguenos en nuestras redes sociales!
         </a>
+
+        <div class="construction-badge">
+            <span>🚧</span>
+            <span class="badge-text">Página aún en construcción<br />Gracias por la paciencia</span>
+            <span>🚧</span>
+        </div>
     </div>
 
     <img src="/fondoaside.webp" alt="Decoración terrorífica" class="animate-blurred-fade-in md:animate-delay-200 md:animate-duration-500" />
@@ -203,6 +209,41 @@
         flex-shrink: 0;
     }
 
+    .construction-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 140, 0, 0.2);
+        color: #ff8c00;
+        padding: 0.6rem 1rem;
+        border-radius: 25px;
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: clamp(0.65rem, 2vw, 0.9rem);
+        font-weight: 600;
+        margin-top: 1rem;
+        border: 2px solid rgba(255, 140, 0, 0.6);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        max-width: 100%;
+        line-height: 1.4;
+    }
+
+    .construction-badge span {
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
+
+    .badge-text {
+        line-height: 1.4;
+    }
+
+    .mobile-break {
+        display: none;
+    }
+
     .info-wrapper {
         display: flex;
         gap: 20px;
@@ -277,6 +318,28 @@
             font-size: clamp(0.7rem, 4.5vw, 1.4rem);
             margin-top: 1rem;
             padding: 0 0.5rem;
+        }
+
+        .construction-badge {
+            font-size: 0.65rem;
+            padding: 0.4rem 0.8rem;
+            gap: 0.3rem;
+            margin-top: 0.75rem;
+            max-width: 95%;
+            word-wrap: break-word;
+        }
+
+        .construction-badge span {
+            display: none;
+        }
+
+        .construction-badge .badge-text {
+            display: inline;
+            text-align: center;
+        }
+
+        .mobile-break {
+            display: inline;
         }
 
         footer {

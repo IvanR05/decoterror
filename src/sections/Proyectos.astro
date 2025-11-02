@@ -12,25 +12,7 @@ import projects2023 from '../data/projects/2023.json';
         <!-- <button class="year-btn" data-year="2023">2023</button> -->
     </div>
     <div class="countdown-section" id="countdown-2025">
-        <p class="countdown-text">¡ Ven a visitarnos para descubrir los nuevos proyectos de este año !</p>
-        <div class="countdown-timer">
-            <div class="time-unit">
-                <span class="time-value" id="days">00</span>
-                <span class="time-label">Días</span>
-            </div>
-            <div class="time-unit">
-                <span class="time-value" id="hours">00</span>
-                <span class="time-label">Horas</span>
-            </div>
-            <div class="time-unit">
-                <span class="time-value" id="minutes">00</span>
-                <span class="time-label">Minutos</span>
-            </div>
-            <div class="time-unit">
-                <span class="time-value" id="seconds">00</span>
-                <span class="time-label">Segundos</span>
-            </div>
-        </div>
+        <p class="countdown-text">¡ Fotos pronto !</p>
     </div>
     <div class="projects-grid">
         <!-- Project cards will be injected here by JavaScript -->
@@ -40,35 +22,6 @@ import projects2023 from '../data/projects/2023.json';
 
 <script define:vars={{ projects2023, projects2024, projects2025 }}>
     let currentYear = new Date().getFullYear();
-
-    // Countdown function
-    function updateCountdown() {
-        const targetDate = new Date('2025-10-31T19:00:00+01:00').getTime();
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        if (distance < 0) {
-            document.getElementById('days').textContent = '00';
-            document.getElementById('hours').textContent = '00';
-            document.getElementById('minutes').textContent = '00';
-            document.getElementById('seconds').textContent = '00';
-            return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById('days').textContent = String(days).padStart(2, '0');
-        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-    }
-
-    // Update countdown every second
-    let countdownInterval = setInterval(updateCountdown, 1000);
-    updateCountdown(); // Initial call
 
     function renderProjects(year) {
         const projectsGrid = document.querySelector('.projects-grid');
