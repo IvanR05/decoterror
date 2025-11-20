@@ -1,50 +1,167 @@
 [
     {
-        "title": "Área restringida con soldado y máscara",
-        "image": "/projects/2024/area-restringida-con-soldado-y-mascara.jpg"
+        "id": "area-restringida-2024",
+        "slug": "area-restringida",
+        "title": "Área restringida con soldado y máscara de gas",
+        "description": "",
+        "thumbnail": "/projects/2024/area-restringida/area-restringida-noche.jpg",
+        "year": 2024,
+        "images": [
+            "/projects/2024/area-restringida/area-restringida-noche.jpg",
+            "/projects/2024/area-restringida/area-restringida-con-soldado-y-mascara.jpg",
+            "/projects/2024/area-restringida/area-restringida-dia.jpg"
+        ]
     },
     {
+        "id": "bunker-2024",
+        "slug": "bunker",
         "title": "Búnker de superficie con instalaciones",
-        "image": "/projects/2024/bunker-de-superficie-con-instalaciones.jpg"
+        "description": "Instalación de búnker con efectos de espejo infinito",
+        "thumbnail": "/projects/2024/bunker/bunker-de-superficie-con-instalaciones.jpg",
+        "year": 2024,
+        "images": [
+            "/projects/2024/bunker/bunker-de-superficie-con-instalaciones.jpg",
+            "/projects/2024/bunker/bunker-video.mp4",
+            "/projects/2024/bunker/bunker-espejo-infinito-1-(ver-video).jpg",
+            "/projects/2024/bunker/bunker-espejo-infinito-2-(ver-video).jpg"
+        ]
     },
     {
-        "title": "Esqueleto en escalera",
-        "image": "/projects/2024/esqueleto-en-escalera.jpg"
-    },
-    {
+        "id": "esqueleto-enjaulado-2024",
+        "slug": "esqueleto-enjaulado",
         "title": "Esqueleto enjaulado",
-        "image": "/projects/2024/esqueleto-enjaulado.jpg"
+        "description": "",
+        "thumbnail": "/projects/2024/esqueleto-enjaulado/esqueleto-enjaulado.jpg",
+        "year": 2024,
+        "images": [
+            "/projects/2024/esqueleto-enjaulado/esqueleto-enjaulado.jpg",
+            "/projects/2024/esqueleto-enjaulado/esqueleto-enjaulado-2.jpg",
+            "/projects/2024/esqueleto-enjaulado/esqueleto-enjaulado-noche.jpg"
+        ]
     },
     {
-        "title": "Estrella satánica de led 2",
-        "image": "/projects/2024/estrella-sátanica-de-led-2.jpg"
+        "id": "esqueleto-escalera-2024",
+        "slug": "esqueleto-escalera",
+        "title": "Esqueleto en escalera",
+        "description": "",
+        "thumbnail": "/projects/2024/esqueleto-escalera/gato,-niña,-esqueleto.jpg",
+        "year": 2024,
+        "images": [
+            "/projects/2024/esqueleto-escalera/gato,-niña,-esqueleto.jpg",
+            "/projects/2024/esqueleto-escalera/esqueleto-en-escalera.jpg"
+        ]
     },
     {
-        "title": "Figura atada estructura",
-        "image": "/projects/2024/figura-atada-estructura-x-2.jpg"
+        "id": "esqueleto-tabla-tortura-2024",
+        "slug": "esqueleto-tabla-tortura",
+        "title": "Esqueleto en tabla de tortura",
+        "description": "Esqueleto en tabla de tortura medieval con palanca de apriete de grilletes",
+        "thumbnail": "/projects/2024/esqueleto-tabla-tortura/esqueleto-en-tabla-de-tortura-con-palanca-de-apriete.jpg",
+        "year": 2024,
+        "images": [
+            "/projects/2024/esqueleto-tabla-tortura/esqueleto-en-tabla-de-tortura-con-palanca-de-apriete.jpg",
+            "/projects/2024/esqueleto-tabla-tortura/esqueleto-en-tabla-de-tortura-con-palanca-de-apriete---detras.jpg",
+            "/projects/2024/esqueleto-tabla-tortura/esqueleto-en-tabla-de-tortura-perfil.jpg"
+        ]
     },
     {
+        "id": "estrella-satanica-2024",
+        "slug": "estrella-satanica",
+        "title": "Estrella satánica de led",
+        "description": "",
+        "thumbnail": "/projects/2024/estrella-satanica/estrella-sátanica-de-led-2.jpg",
+        "year": 2024,
+        "images": [
+            "/projects/2024/estrella-satanica/estrella-sátanica-de-led-2.jpg",
+            "/projects/2024/estrella-satanica/estrella-sátanica-de-led.jpg"
+        ]
+    },
+    {
+        "id": "figura-estructura-x-2024",
+        "slug": "figura-estructura-x",
+        "title": "Figura atada en estructura en X",
+        "description": "",
+        "thumbnail": "/projects/2024/figura-estructura-x/figura-atada-estructura-x-1.jpg",
+        "year": 2024,
+        "images": [
+            "/projects/2024/figura-estructura-x/figura-atada-estructura-x-1.jpg",
+            "/projects/2024/figura-estructura-x/figura-atada-estructura-x-2.jpg",
+            "/projects/2024/figura-estructura-x/figura-atada-estructura-x-3.jpg"
+        ]
+    },
+    {
+        "id": "gato-enjaulado-2024",
+        "slug": "gato-enjaulado",
         "title": "Gato enjaulado",
-        "image": "/projects/2024/gato-enjaulado.jpg"
+        "description": "",
+        "thumbnail": "/projects/2024/gato-enjaulado/gato-enjaulado.jpg",
+        "year": 2024,
+        "images": [
+            "/projects/2024/gato-enjaulado/gato-enjaulado.jpg",
+            "/projects/2024/gato-enjaulado/gato,-niña,-esqueleto.jpg",
+            "/projects/2024/gato-enjaulado/niña-asesina-con-gato-enjaulado.jpg"
+        ]
     },
     {
-        "title": "Loco en silla de ruedas",
-        "image": "/projects/2024/loco-en-silla-de-ruedas.jpg"
+        "id": "loco-en-silla-2024",
+        "slug": "loco-en-silla",
+        "title": "Paciente de psiquiátrico en silla de ruedas",
+        "description": "* Silla de ruedas funcional",
+        "thumbnail": "/projects/2024/loco-en-silla/loco-en-silla-de-ruedas.jpg",
+        "year": 2024,
+        "images": [
+            "/projects/2024/loco-en-silla/loco-en-silla-de-ruedas.jpg",
+            "/projects/2024/loco-en-silla/loco-en-silla-de-ruedas-2.jpg",
+            "/projects/2024/loco-en-silla/loco-en-silla-de-ruedas-3.jpg"
+        ]
     },
     {
-        "title": "Niña asesina con gato enjaulado",
-        "image": "/projects/2024/niña-asesina-con-gato-enjaulado.jpg"
+        "id": "niña-asesina-2024",
+        "slug": "niña-asesina",
+        "title": "Niña asesina",
+        "description": "",
+        "thumbnail": "/projects/2024/niña-asesina/niña-asesina-con-gato-enjaulado.jpg",
+        "year": 2024,
+        "images": [
+            "/projects/2024/niña-asesina/niña-asesina-con-gato-enjaulado.jpg",
+            "/projects/2024/niña-asesina/gato,-niña,-esqueleto.jpg",
+            "/projects/2024/niña-asesina/niña-asesina-noche.jpg"
+        ]
     },
     {
+        "id": "niña-columpio-2024",
+        "slug": "niña-columpio",
         "title": "Niña en columpio",
-        "image": "/projects/2024/niña-en-columpio.jpg"
+        "description": "",
+        "thumbnail": "/projects/2024/niña-columpio/niña-en-columpio.jpg",
+        "year": 2024,
+        "images": [
+            "/projects/2024/niña-columpio/niña-en-columpio.jpg",
+            "/projects/2024/niña-columpio/niña-en-columpio-dia.jpg"
+        ]
     },
     {
+        "id": "niña-pozo-2024",
+        "slug": "niña-pozo",
         "title": "Niña del pozo",
-        "image": "/projects/2024/niña-pozo.jpg"
+        "description": "Niña emergiendo de un pozo decorativo",
+        "thumbnail": "/projects/2024/niña-pozo/niña-pozo.jpg",
+        "year": 2024,
+        "images": [
+            "/projects/2024/niña-pozo/niña-pozo.jpg"
+        ]
     },
     {
+        "id": "noria-tortura-2024",
+        "slug": "noria-tortura",
         "title": "Noria de tortura con tabla de pinchos y rueda de agua antigua",
-        "image": "/projects/2024/noria-de-tortura-con-tabla-de-pinchos-y-rueda-de-agua-antigua.jpg"
+        "description": "",
+        "thumbnail": "/projects/2024/noria-tortura/noria-de-tortura-con-tabla-de-pinchos-y-rueda-de-agua-antigua.jpg",
+        "year": 2024,
+        "images": [
+            "/projects/2024/noria-tortura/noria-de-tortura-con-tabla-de-pinchos-y-rueda-de-agua-antigua.jpg",
+            "/projects/2024/noria-tortura/noria-de-tortura-dia-1.jpg",
+            "/projects/2024/noria-tortura/noria-de-tortura-dia-2.jpg"
+        ]
     }
 ]

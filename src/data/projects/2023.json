@@ -1,42 +1,112 @@
 [
     {
+        "id": "bruja-ahorcada-2023",
+        "slug": "bruja-ahorcada",
         "title": "Bruja ahorcada",
-        "image": "/projects/2023/bruja-ahorcada.jpg"
+        "description": "Bruja decorativa ahorcada",
+        "thumbnail": "/projects/2023/bruja-ahorcada.jpg",
+        "year": 2023,
+        "images": [
+            "/projects/2023/bruja-ahorcada.jpg"
+        ]
     },
     {
+        "id": "bruja-atada-2023",
+        "slug": "bruja-atada",
         "title": "Bruja atada",
-        "image": "/projects/2023/bruja-atada.jpg"
+        "description": "Bruja decorativa atada",
+        "thumbnail": "/projects/2023/bruja-atada.jpg",
+        "year": 2023,
+        "images": [
+            "/projects/2023/bruja-atada.jpg"
+        ]
     },
     {
+        "id": "bruja-atada2-2023",
+        "slug": "bruja-atada2",
         "title": "Bruja atada 2",
-        "image": "/projects/2023/bruja-atada2.jpg"
+        "description": "Segunda versión de bruja atada",
+        "thumbnail": "/projects/2023/bruja-atada2.jpg",
+        "year": 2023,
+        "images": [
+            "/projects/2023/bruja-atada2.jpg"
+        ]
     },
     {
+        "id": "bruja-cartas-2023",
+        "slug": "bruja-cartas",
         "title": "Bruja cartas",
-        "image": "/projects/2023/bruja-cartas.jpg"
+        "description": "Bruja con cartas del tarot",
+        "thumbnail": "/projects/2023/bruja-cartas.jpg",
+        "year": 2023,
+        "images": [
+            "/projects/2023/bruja-cartas.jpg"
+        ]
     },
     {
+        "id": "bruja-colgada-2023",
+        "slug": "bruja-colgada",
         "title": "Bruja colgada",
-        "image": "/projects/2023/bruja-colgada.jpg"
+        "description": "Bruja colgada decorativa",
+        "thumbnail": "/projects/2023/bruja-colgada.jpg",
+        "year": 2023,
+        "images": [
+            "/projects/2023/bruja-colgada.jpg"
+        ]
     },
     {
+        "id": "bruja-enjaulada-2023",
+        "slug": "bruja-enjaulada",
         "title": "Bruja enjaulada",
-        "image": "/projects/2023/bruja-enjaulada.jpg"
+        "description": "Bruja en una jaula decorativa",
+        "thumbnail": "/projects/2023/bruja-enjaulada.jpg",
+        "year": 2023,
+        "images": [
+            "/projects/2023/bruja-enjaulada.jpg"
+        ]
     },
     {
+        "id": "bruja-manzanas-2023",
+        "slug": "bruja-manzanas",
         "title": "Bruja manzanas",
-        "image": "/projects/2023/bruja-manzanas.jpg"
+        "description": "Bruja con manzanas encantadas",
+        "thumbnail": "/projects/2023/bruja-manzanas.jpg",
+        "year": 2023,
+        "images": [
+            "/projects/2023/bruja-manzanas.jpg"
+        ]
     },
     {
+        "id": "cartas-2023",
+        "slug": "cartas",
         "title": "Cartas",
-        "image": "/projects/2023/cartas.jpg"
+        "description": "Cartas del tarot decorativas",
+        "thumbnail": "/projects/2023/cartas.jpg",
+        "year": 2023,
+        "images": [
+            "/projects/2023/cartas.jpg"
+        ]
     },
     {
+        "id": "mini-esqueleto-2023",
+        "slug": "mini-esqueleto",
         "title": "Mini esqueleto",
-        "image": "/projects/2023/mini-esqueleto.jpg"
+        "description": "Esqueleto decorativo en miniatura",
+        "thumbnail": "/projects/2023/mini-esqueleto.jpg",
+        "year": 2023,
+        "images": [
+            "/projects/2023/mini-esqueleto.jpg"
+        ]
     },
     {
+        "id": "restos-bruja-2023",
+        "slug": "restos-bruja",
         "title": "Restos de bruja",
-        "image": "/projects/2023/restos-bruja.jpg"
+        "description": "Restos decorativos de una bruja",
+        "thumbnail": "/projects/2023/restos-bruja.jpg",
+        "year": 2023,
+        "images": [
+            "/projects/2023/restos-bruja.jpg"
+        ]
     }
 ]

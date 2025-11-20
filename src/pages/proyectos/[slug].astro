@@ -1,0 +1,518 @@
+---
+import ProjectPage from '../../layouts/ProjectPage.astro';
+import projects2023 from '../../data/projects/2023.json';
+import projects2024 from '../../data/projects/2024.json';
+import projects2025 from '../../data/projects/2025.json';
+
+export async function getStaticPaths() {
+  const allProjects = [
+    ...projects2023,
+    ...projects2024,
+    ...projects2025
+  ];
+
+  return allProjects.map(project => ({
+    params: { slug: project.slug },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<ProjectPage>
+  <article class="project-detail">
+    <nav class="project-navigation">
+      <a href="/#proyectos" class="back-button">
+        ← Volver a proyectos
+      </a>
+    </nav>
+
+    <div class="project-content">
+      <!-- Gallery Section (Left) -->
+      <div class="gallery-section">
+        <div class="main-image-container">
+          <button class="nav-arrow prev-arrow" id="prevBtn" aria-label="Imagen anterior">
+            <span>&lt;</span>
+          </button>
+          <img
+            id="mainImage"
+            src={project.images[0]}
+            alt={`${project.title} - Imagen 1`}
+            class="main-image"
+          />
+          <video
+            id="mainVideo"
+            class="main-image"
+            controls
+            style="display: none;"
+          >
+            <source id="videoSource" src="" type="video/mp4" />
+            Tu navegador no soporta el elemento de video.
+          </video>
+          <button class="nav-arrow next-arrow" id="nextBtn" aria-label="Imagen siguiente">
+            <span>&gt;</span>
+          </button>
+        </div>
+
+        <!-- Thumbnail strip -->
+        <div class="thumbnail-strip" id="thumbnailStrip">
+          {project.images.map((image, index) => {
+            const isVideo = image.endsWith('.mp4') || image.endsWith('.webm') || image.endsWith('.ogg');
+            return (
+              <div class={`thumbnail-wrapper ${index === 0 ? 'active' : ''}`} data-index={index}>
+                {isVideo ? (
+                  <div class="video-thumbnail">
+                    <div class="video-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </div>
+                    <span class="video-label">VIDEO</span>
+                  </div>
+                ) : (
+                  <img
+                    src={image}
+                    alt={`${project.title} - Miniatura ${index + 1}`}
+                    class="thumbnail"
+                    loading="lazy"
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        <!-- Image counter -->
+        <div class="image-counter">
+          <span id="currentImage">1</span> / <span id="totalImages">{project.images.length}</span>
+        </div>
+      </div>
+
+      <!-- Info Section (Right) -->
+      <div class="info-section">
+        <header class="project-header">
+          <h1>{project.title}</h1>
+          <p class="project-year">Año: {project.year}</p>
+          <p class="project-description">{project.description}</p>
+        </header>
+      </div>
+    </div>
+  </article>
+</ProjectPage>
+
+<script define:vars={{ project }}>
+  class ImageGallery {
+    constructor() {
+      this.currentIndex = 0;
+      this.images = project.images;
+      this.mainImage = document.getElementById('mainImage');
+      this.mainVideo = document.getElementById('mainVideo');
+      this.videoSource = document.getElementById('videoSource');
+      this.thumbnails = document.querySelectorAll('.thumbnail-wrapper');
+      this.currentCounter = document.getElementById('currentImage');
+      this.totalCounter = document.getElementById('totalImages');
+      this.prevBtn = document.getElementById('prevBtn');
+      this.nextBtn = document.getElementById('nextBtn');
+
+      this.init();
+    }
+
+    init() {
+      // Add event listeners
+      this.prevBtn.addEventListener('click', () => this.prevImage());
+      this.nextBtn.addEventListener('click', () => this.nextImage());
+
+      // Thumbnail click events
+      this.thumbnails.forEach((thumb) => {
+        thumb.addEventListener('click', () => {
+          const index = parseInt(thumb.getAttribute('data-index'));
+          this.goToImage(index);
+        });
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') this.prevImage();
+        if (e.key === 'ArrowRight') this.nextImage();
+      });
+
+      this.updateDisplay();
+    }
+
+    goToImage(index) {
+      this.currentIndex = index;
+      this.updateDisplay();
+    }
+
+    prevImage() {
+      this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.images.length - 1;
+      this.updateDisplay();
+    }
+
+    nextImage() {
+      this.currentIndex = this.currentIndex < this.images.length - 1 ? this.currentIndex + 1 : 0;
+      this.updateDisplay();
+    }
+
+    updateDisplay() {
+      const currentMedia = this.images[this.currentIndex];
+      const isVideo = currentMedia.endsWith('.mp4') || currentMedia.endsWith('.webm') || currentMedia.endsWith('.ogg');
+
+      // Show/hide appropriate media element
+      if (isVideo) {
+        this.mainImage.style.display = 'none';
+        this.mainVideo.style.display = 'block';
+        this.videoSource.src = currentMedia;
+        this.mainVideo.load();
+      } else {
+        this.mainVideo.style.display = 'none';
+        this.mainImage.style.display = 'block';
+        this.mainImage.src = currentMedia;
+        this.mainImage.alt = `${project.title} - Imagen ${this.currentIndex + 1}`;
+      }
+
+      // Update thumbnails
+      this.thumbnails.forEach((thumb) => {
+        const index = parseInt(thumb.getAttribute('data-index'));
+        thumb.classList.toggle('active', index === this.currentIndex);
+      });
+
+      // Update counter
+      this.currentCounter.textContent = this.currentIndex + 1;
+
+      // Scroll thumbnail into view if needed
+      const activeThumb = document.querySelector('.thumbnail-wrapper.active');
+      if (activeThumb) {
+        activeThumb.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center'
+        });
+      }
+    }
+  }
+
+  // Initialize gallery when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    new ImageGallery();
+  });
+</script>
+
+<style>
+  .project-detail {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: #ffffff;
+  }
+
+  .project-navigation {
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .back-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: rgb(27, 27, 27);
+    color: #ffffff;
+    text-decoration: none;
+    border: 2px solid #f13000;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .back-button:hover {
+    background-color: #f13000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(241, 48, 0, 0.4);
+  }
+
+  .project-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Gallery Section (Left) */
+  .gallery-section {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .main-image-container {
+    position: relative;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid rgb(147, 40, 40);
+    background-color: rgb(27, 27, 27);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(241, 48, 0, 0.9);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: grid;
+    place-items: center;
+    z-index: 10;
+    margin: 0 1rem;
+    line-height: 1;
+  }
+
+  .nav-arrow span {
+    display: block;
+  }
+
+  .nav-arrow:hover {
+    background: rgba(241, 48, 0, 1);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .prev-arrow {
+    left: 20px;
+  }
+
+  .next-arrow {
+    right: 20px;
+  }
+
+  .thumbnail-strip {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    scrollbar-width: thin;
+    scrollbar-color: #f13000 rgba(27, 27, 27, 0.5);
+  }
+
+  .thumbnail-strip::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .thumbnail-strip::-webkit-scrollbar-track {
+    background: rgba(27, 27, 27, 0.5);
+    border-radius: 3px;
+  }
+
+  .thumbnail-strip::-webkit-scrollbar-thumb {
+    background: #f13000;
+    border-radius: 3px;
+  }
+
+  .thumbnail-wrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    border: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .video-thumbnail {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .video-icon {
+    width: 32px;
+    height: 32px;
+    color: #f13000;
+  }
+
+  .video-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .video-label {
+    font-size: 0.65rem;
+    font-weight: bold;
+    color: #f13000;
+    letter-spacing: 1px;
+  }
+
+  .thumbnail-wrapper:hover {
+    transform: scale(1.05);
+    border-color: #f13000;
+  }
+
+  .thumbnail-wrapper.active {
+    border-color: #f13000;
+    box-shadow: 0 0 15px rgba(241, 48, 0, 0.5);
+  }
+
+  .image-counter {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #cd2f07;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+
+  /* Info Section (Right) */
+  .info-section {
+    padding-top: 2rem;
+  }
+
+  .project-header {
+    margin-bottom: 3rem;
+  }
+
+  .project-header h1 {
+    font-size: 2.5rem;
+    color: #f13000;
+    margin-bottom: 1rem;
+    font-family: 'Metal Mania', cursive;
+    line-height: 1.2;
+  }
+
+  .project-year {
+    font-size: 1.2rem;
+    color: #cd2f07;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+  }
+
+  .project-description {
+    font-size: 1.1rem;
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  /* Responsive design */
+  @media (max-width: 1024px) {
+    .project-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .gallery-section {
+      position: static;
+      order: 2;
+    }
+
+    .info-section {
+      order: 1;
+      padding-top: 0;
+    }
+
+    .main-image {
+      max-height: 400px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .project-detail {
+      padding: 1rem;
+    }
+
+    .project-header h1 {
+      font-size: 2rem;
+    }
+
+    .project-description {
+      font-size: 1rem;
+    }
+
+    .main-image {
+      max-height: 300px;
+    }
+
+    .thumbnail-wrapper {
+      width: 60px;
+      height: 60px;
+    }
+
+    .video-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    .video-label {
+      font-size: 0.5rem;
+    }
+
+    .nav-arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+    }
+
+    .nav-arrow span {
+      display: block;
+    }
+
+    .prev-arrow {
+      left: 15px;
+    }
+
+    .next-arrow {
+      right: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .thumbnail-strip {
+      gap: 0.5rem;
+    }
+
+    .thumbnail-wrapper {
+      width: 50px;
+      height: 50px;
+    }
+
+    .video-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    .video-label {
+      font-size: 0.45rem;
+    }
+  }
+</style>

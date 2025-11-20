@@ -1,0 +1,185 @@
+---
+// Sticky Header Component
+---
+
+<header id="sticky-header" class="sticky-header">
+    <div class="header-content">
+        <a href="/" class="logo">
+            DECOTERROR
+        </a>
+        
+        <nav class="nav-links">
+            <a href="/#about-me">Sobre mí</a>
+            <a href="/#proyectos">Proyectos</a>
+            <a href="/contacto">Contacto</a>
+        </nav>
+    </div>
+</header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const header = document.getElementById('sticky-header');
+        if (!header) return;
+
+        // Check if we're on the homepage by looking for the Hero section
+        const heroSection = document.querySelector('section:first-of-type');
+        const isHomepage = heroSection && heroSection.querySelector('.social-buttons, .contact-btn');
+
+        if (isHomepage) {
+            // Homepage: Use intersection observer for the hero section
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        // Show header when hero is not in view
+                        if (!entry.isIntersecting) {
+                            header.classList.add('visible');
+                        } else {
+                            header.classList.remove('visible');
+                        }
+                    });
+                },
+                {
+                    threshold: 0,
+                    rootMargin: '-100px 0px 0px 0px'
+                }
+            );
+            observer.observe(heroSection);
+        } else {
+            // Other pages: Show header immediately or after minimal scroll
+            const handleScroll = () => {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Show header after just 50px of scroll, or if page can't scroll
+                const pageHeight = document.documentElement.scrollHeight;
+                const windowHeight = window.innerHeight;
+                const canScroll = pageHeight > windowHeight;
+                
+                if (currentScroll > 50 || !canScroll) {
+                    header.classList.add('visible');
+                } else {
+                    header.classList.remove('visible');
+                }
+            };
+
+            // Check initial state
+            handleScroll();
+            
+            // Listen for scroll events
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            // Also check after a short delay in case content loads dynamically
+            setTimeout(handleScroll, 100);
+        }
+    });
+</script>
+
+<style>
+    .sticky-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 2px solid rgba(255, 140, 0, 0.3);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sticky-header.visible {
+        transform: translateY(0);
+    }
+
+    .header-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-family: 'Nosifer', 'Metal Mania', system-ui;
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
+        color: rgb(205 37 16);
+        text-shadow:
+            0 0 10px rgba(205, 37, 16, 0.6),
+            2px 2px 4px rgba(101, 0, 0, 0.9);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+        text-shadow:
+            0 0 20px rgba(205, 37, 16, 0.8),
+            2px 2px 4px rgba(101, 0, 0, 0.9);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-family: 'Metal Mania', system-ui;
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 0.5rem 0;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #ff8c00;
+        transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        color: #ff8c00;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+        .header-content {
+            padding: 0.75rem 1rem;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .nav-links {
+            gap: 0.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.75rem;
+            padding: 0.25rem 0;
+        }
+    }
+</style>

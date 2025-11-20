@@ -1,0 +1,51 @@
+---
+import Layout from './Layout.astro';
+import Footer from '../sections/Footer.astro';
+---
+
+<Layout>
+  <main class="project-page">
+    <slot />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .project-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+    padding: 2rem 0;
+    padding-top: calc(80px + 2rem);
+  }
+
+  /* Ensure content is readable on dark background */
+  .project-page :global(h1),
+  .project-page :global(h2),
+  .project-page :global(h3),
+  .project-page :global(p),
+  .project-page :global(span),
+  .project-page :global(div) {
+    color: #ffffff;
+  }
+
+  /* Override any inherited colors that might not work on dark background */
+  .project-page :global(.project-detail) {
+    color: #ffffff;
+  }
+
+  .project-page :global(.project-header h1) {
+    color: #f13000 !important;
+  }
+
+  .project-page :global(.project-year) {
+    color: #cd2f07 !important;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .project-page {
+      padding: 1rem 0;
+      padding-top: calc(70px + 1rem);
+    }
+  }
+</style>

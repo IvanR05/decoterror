@@ -34,6 +34,22 @@ import Layout from "../layouts/Layout.astro";
                             </span>
                         </div>
                     </a>
+
+                    <a href="https://es.wallapop.com/user/mariamc-64692445" target="_blank" class="contact-item">
+                        <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <path class="wallapop-path" d="m12.283,25.17C3.2687,22.8069,2.9687,15.198,6.204,10.9672c3.4737-4.5426,9.483-2.1075,11.6236-.4008,1.8705-6.2126,11.0892-9.2855,18.7047-1.1356,7.6155,8.1499-2.8057,16.6338-2.8057,16.6338"></path>
+                                <path class="wallapop-path" d="m38.861,18.7175c9.6101,4.143,2.8819,16.499-3.3307,15.4969.1441,4.0714-1.6033,9.2924-9.1519,9.2855-4.0036-.0036-10.0204-4.6094-5.8118-14.0285"></path>
+                                <path class="wallapop-path" d="m8.6639,23.7035c-6.5348,3.2963-4.0579,19.1811,10.8364,14.345"></path>
+                            </g>
+                        </svg>
+                        <div>
+                            <h2>Wallapop</h2>
+                            <span class="instagram-link">
+                                Ver productos
+                            </span>
+                        </div>
+                    </a>
                 </div>
 
                 <a href="/" class="back-btn">
@@ -53,16 +69,36 @@ import Layout from "../layouts/Layout.astro";
         display: flex;
         align-items: center;
         justify-content: center;
-        background: url('/fondoaside.webp') center/cover no-repeat;
         position: relative;
+        overflow: hidden;
+        padding-top: 80px;
     }
 
     main::before {
         content: "";
         position: absolute;
         inset: 0;
-        background: rgba(0, 0, 0, 0.7);
+        background: url('/fondoaside.webp') center/cover no-repeat;
+        animation: kenburns-top 5s ease-out both;
+    }
+
+    main::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(3px);
+    }
+
+    @keyframes kenburns-top {
+        0% {
+            transform: scale(1) translateY(0);
+            transform-origin: 50% 16%;
+        }
+        100% {
+            transform: scale(1.25) translateY(-15px);
+            transform-origin: top;
+        }
     }
 
     .contact-section {
@@ -142,6 +178,14 @@ import Layout from "../layouts/Layout.astro";
         font-family: "Metal Mania", system-ui;
     }
 
+    .wallapop-path {
+        fill: none;
+        stroke: #13c1ac;
+        stroke-width: 3.168;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
     .email-link,
     .instagram-link {
         font-size: 1.2rem;
@@ -177,6 +221,10 @@ import Layout from "../layouts/Layout.astro";
     }
 
     @media (max-width: 768px) {
+        main {
+            padding-top: 70px;
+        }
+
         .contact-section {
             padding: 1rem;
         }
