@@ -24,7 +24,8 @@ const { project } = Astro.props;
   <article class="project-detail">
     <nav class="project-navigation">
       <a href="/#proyectos" class="back-button">
-        ← Volver a proyectos
+        <span class="back-arrow">←</span>
+        <span>Volver a proyectos</span>
       </a>
     </nav>
 
@@ -33,7 +34,9 @@ const { project } = Astro.props;
       <div class="gallery-section">
         <div class="main-image-container">
           <button class="nav-arrow prev-arrow" id="prevBtn" aria-label="Imagen anterior">
-            <span>&lt;</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
           </button>
           <img
             id="mainImage"
@@ -51,7 +54,9 @@ const { project } = Astro.props;
             Tu navegador no soporta el elemento de video.
           </video>
           <button class="nav-arrow next-arrow" id="nextBtn" aria-label="Imagen siguiente">
-            <span>&gt;</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            </svg>
           </button>
         </div>
 
@@ -92,10 +97,29 @@ const { project } = Astro.props;
       <!-- Info Section (Right) -->
       <div class="info-section">
         <header class="project-header">
+          <div class="year-badge">🎃 {project.year}</div>
           <h1>{project.title}</h1>
-          <p class="project-year">Año: {project.year}</p>
-          <p class="project-description">{project.description}</p>
+          {project.description && (
+            <>
+              <div class="separator">
+                <span></span>
+                <span class="pumpkin">🎃</span>
+                <span></span>
+              </div>
+              <p class="project-description">{project.description}</p>
+            </>
+          )}
         </header>
+
+        <div class="action-box">
+          <p class="action-text">¿Te gusta este proyecto?</p>
+          <a href="/contacto" class="contact-project-btn">
+            <span>Contáctame</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </article>
@@ -119,11 +143,9 @@ const { project } = Astro.props;
     }
 
     init() {
-      // Add event listeners
       this.prevBtn.addEventListener('click', () => this.prevImage());
       this.nextBtn.addEventListener('click', () => this.nextImage());
 
-      // Thumbnail click events
       this.thumbnails.forEach((thumb) => {
         thumb.addEventListener('click', () => {
           const index = parseInt(thumb.getAttribute('data-index'));
@@ -131,7 +153,6 @@ const { project } = Astro.props;
         });
       });
 
-      // Keyboard navigation
       document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') this.prevImage();
         if (e.key === 'ArrowRight') this.nextImage();
@@ -159,7 +180,6 @@ const { project } = Astro.props;
       const currentMedia = this.images[this.currentIndex];
       const isVideo = currentMedia.endsWith('.mp4') || currentMedia.endsWith('.webm') || currentMedia.endsWith('.ogg');
 
-      // Show/hide appropriate media element
       if (isVideo) {
         this.mainImage.style.display = 'none';
         this.mainVideo.style.display = 'block';
@@ -172,16 +192,13 @@ const { project } = Astro.props;
         this.mainImage.alt = `${project.title} - Imagen ${this.currentIndex + 1}`;
       }
 
-      // Update thumbnails
       this.thumbnails.forEach((thumb) => {
         const index = parseInt(thumb.getAttribute('data-index'));
         thumb.classList.toggle('active', index === this.currentIndex);
       });
 
-      // Update counter
       this.currentCounter.textContent = this.currentIndex + 1;
 
-      // Scroll thumbnail into view if needed
       const activeThumb = document.querySelector('.thumbnail-wrapper.active');
       if (activeThumb) {
         activeThumb.scrollIntoView({
@@ -193,7 +210,6 @@ const { project } = Astro.props;
     }
   }
 
-  // Initialize gallery when DOM is loaded
   document.addEventListener('DOMContentLoaded', () => {
     new ImageGallery();
   });
@@ -213,32 +229,44 @@ const { project } = Astro.props;
   }
 
   .back-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    background-color: rgb(27, 27, 27);
-    color: #ffffff;
+    background: linear-gradient(135deg, #1a0a0a 0%, #2d0f0f 100%);
+    color: #ff8c00;
     text-decoration: none;
     border: 2px solid #f13000;
-    border-radius: 8px;
+    border-radius: 50px;
     font-weight: bold;
     font-size: 1rem;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(241, 48, 0, 0.2);
+  }
+
+  .back-arrow {
+    transition: transform 0.3s ease;
   }
 
   .back-button:hover {
-    background-color: #f13000;
+    background: linear-gradient(135deg, #2d0f0f 0%, #3d1515 100%);
+    color: #ffad33;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(241, 48, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(241, 48, 0, 0.4);
+  }
+
+  .back-button:hover .back-arrow {
+    transform: translateX(-4px);
   }
 
   .project-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.2fr 0.8fr;
     gap: 4rem;
     align-items: start;
   }
 
-  /* Gallery Section (Left) */
+  /* Gallery Section */
   .gallery-section {
     position: sticky;
     top: 2rem;
@@ -246,12 +274,15 @@ const { project } = Astro.props;
 
   .main-image-container {
     position: relative;
-    margin-bottom: 2rem;
-    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border-radius: 16px;
     overflow: hidden;
-    border: 2px solid rgb(147, 40, 40);
-    background-color: rgb(27, 27, 27);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    border: 3px solid #f13000;
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a0a0a 100%);
+    box-shadow:
+      0 0 0 1px rgba(241, 48, 0, 0.3),
+      0 10px 40px rgba(0, 0, 0, 0.8),
+      0 0 30px rgba(241, 48, 0, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -260,55 +291,59 @@ const { project } = Astro.props;
   .main-image {
     width: 100%;
     height: auto;
-    max-height: 500px;
+    max-height: 520px;
     object-fit: contain;
     display: block;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease;
   }
 
   .nav-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(241, 48, 0, 0.9);
-    color: white;
-    border: none;
+    background: rgba(0, 0, 0, 0.75);
+    color: #ff8c00;
+    border: 2px solid #f13000;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    font-size: 2rem;
-    font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
     display: grid;
     place-items: center;
     z-index: 10;
     margin: 0 1rem;
-    line-height: 1;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   }
 
-  .nav-arrow span {
-    display: block;
+  .nav-arrow svg {
+    width: 28px;
+    height: 28px;
   }
 
   .nav-arrow:hover {
-    background: rgba(241, 48, 0, 1);
+    background: rgba(241, 48, 0, 0.9);
+    color: white;
     transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(241, 48, 0, 0.6);
   }
 
   .prev-arrow {
-    left: 20px;
+    left: 12px;
   }
 
   .next-arrow {
-    right: 20px;
+    right: 12px;
   }
 
   .thumbnail-strip {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.85rem;
     overflow-x: auto;
-    padding: 1rem 0;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    border: 1px solid rgba(241, 48, 0, 0.2);
     scrollbar-width: thin;
     scrollbar-color: #f13000 rgba(27, 27, 27, 0.5);
   }
@@ -328,15 +363,16 @@ const { project } = Astro.props;
   }
 
   .thumbnail-wrapper {
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
-    border: 3px solid transparent;
+    width: 85px;
+    height: 85px;
+    border-radius: 10px;
+    border: 2px solid rgba(241, 48, 0, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
     flex-shrink: 0;
     overflow: hidden;
     position: relative;
+    background: #1a0a0a;
   }
 
   .thumbnail {
@@ -344,12 +380,13 @@ const { project } = Astro.props;
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.3s ease;
   }
 
   .video-thumbnail {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    background: linear-gradient(135deg, #1a0a0a 0%, #2d0f0f 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -358,8 +395,8 @@ const { project } = Astro.props;
   }
 
   .video-icon {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     color: #f13000;
   }
 
@@ -369,66 +406,161 @@ const { project } = Astro.props;
   }
 
   .video-label {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: bold;
-    color: #f13000;
+    color: #ff8c00;
     letter-spacing: 1px;
   }
 
   .thumbnail-wrapper:hover {
-    transform: scale(1.05);
-    border-color: #f13000;
+    transform: scale(1.08);
+    border-color: #ff8c00;
+    box-shadow: 0 0 15px rgba(241, 48, 0, 0.3);
+  }
+
+  .thumbnail-wrapper:hover .thumbnail {
+    transform: scale(1.1);
   }
 
   .thumbnail-wrapper.active {
-    border-color: #f13000;
-    box-shadow: 0 0 15px rgba(241, 48, 0, 0.5);
+    border-color: #ff8c00;
+    box-shadow: 0 0 20px rgba(241, 48, 0, 0.5);
+    transform: scale(1.05);
   }
 
   .image-counter {
     text-align: center;
     font-size: 1.1rem;
-    color: #cd2f07;
+    color: #ff8c00;
     font-weight: bold;
     margin-top: 1rem;
+    font-family: 'Metal Mania', cursive;
+    letter-spacing: 1px;
   }
 
-  /* Info Section (Right) */
+  /* Info Section */
   .info-section {
-    padding-top: 2rem;
+    padding-top: 1rem;
   }
 
   .project-header {
-    margin-bottom: 3rem;
+    background: linear-gradient(135deg, rgba(26, 10, 10, 0.95) 0%, rgba(45, 15, 15, 0.9) 100%);
+    border: 2px solid #f13000;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow:
+      0 10px 40px rgba(0, 0, 0, 0.6),
+      0 0 30px rgba(241, 48, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #f13000, #ff8c00, #f13000);
+  }
+
+  .year-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(241, 48, 0, 0.15);
+    color: #ff8c00;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(241, 48, 0, 0.3);
   }
 
   .project-header h1 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 3rem);
     color: #f13000;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem;
     font-family: 'Metal Mania', cursive;
-    line-height: 1.2;
+    line-height: 1.1;
+    text-shadow:
+      0 0 20px rgba(241, 48, 0, 0.4),
+      2px 2px 4px rgba(0, 0, 0, 0.8);
   }
 
-  .project-year {
-    font-size: 1.2rem;
-    color: #cd2f07;
-    margin-bottom: 1.5rem;
-    font-weight: bold;
+  .separator {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .separator span:first-child,
+  .separator span:last-child {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #f13000, transparent);
+  }
+
+  .pumpkin {
+    font-size: 1.4rem;
+    filter: drop-shadow(0 0 8px rgba(255, 140, 0, 0.6));
   }
 
   .project-description {
-    font-size: 1.1rem;
-    color: #ffffff;
-    line-height: 1.6;
-    margin-bottom: 2rem;
+    font-size: 1.15rem;
+    color: #e8e8e8;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .action-box {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(241, 48, 0, 0.25);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .action-text {
+    color: #ff8c00;
+    font-family: 'Metal Mania', cursive;
+    font-size: 1.3rem;
+    margin: 0 0 1rem;
+    letter-spacing: 0.5px;
+  }
+
+  .contact-project-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    background: linear-gradient(135deg, #f13000 0%, #cd2507 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(241, 48, 0, 0.4);
+    border: 2px solid transparent;
+  }
+
+  .contact-project-btn:hover {
+    background: linear-gradient(135deg, #ff4500 0%, #f13000 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(241, 48, 0, 0.6);
+    border-color: #ff8c00;
   }
 
   /* Responsive design */
   @media (max-width: 1024px) {
     .project-content {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 2.5rem;
     }
 
     .gallery-section {
@@ -442,7 +574,7 @@ const { project } = Astro.props;
     }
 
     .main-image {
-      max-height: 400px;
+      max-height: 450px;
     }
   }
 
@@ -451,8 +583,8 @@ const { project } = Astro.props;
       padding: 1rem;
     }
 
-    .project-header h1 {
-      font-size: 2rem;
+    .project-header {
+      padding: 1.5rem;
     }
 
     .project-description {
@@ -460,12 +592,12 @@ const { project } = Astro.props;
     }
 
     .main-image {
-      max-height: 300px;
+      max-height: 350px;
     }
 
     .thumbnail-wrapper {
-      width: 60px;
-      height: 60px;
+      width: 70px;
+      height: 70px;
     }
 
     .video-icon {
@@ -480,30 +612,32 @@ const { project } = Astro.props;
     .nav-arrow {
       width: 40px;
       height: 40px;
-      font-size: 1.5rem;
+      margin: 0 0.5rem;
     }
 
-    .nav-arrow span {
-      display: block;
+    .nav-arrow svg {
+      width: 22px;
+      height: 22px;
     }
 
     .prev-arrow {
-      left: 15px;
+      left: 8px;
     }
 
     .next-arrow {
-      right: 15px;
+      right: 8px;
     }
   }
 
   @media (max-width: 480px) {
     .thumbnail-strip {
-      gap: 0.5rem;
+      gap: 0.6rem;
+      padding: 0.75rem;
     }
 
     .thumbnail-wrapper {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
     }
 
     .video-icon {
@@ -513,6 +647,15 @@ const { project } = Astro.props;
 
     .video-label {
       font-size: 0.45rem;
+    }
+
+    .action-text {
+      font-size: 1.1rem;
+    }
+
+    .contact-project-btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.95rem;
     }
   }
 </style>
