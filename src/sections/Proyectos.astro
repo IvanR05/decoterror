@@ -11,12 +11,9 @@ import projects2023 from '../data/projects/2023.json';
         <span></span>
     </div>
     <div class="year-buttons">
-        <button class="year-btn" data-year="2025">2025</button>
-        <button class="year-btn active" data-year="2024">2024</button>
+        <button class="year-btn active" data-year="2025">2025</button>
+        <button class="year-btn" data-year="2024">2024</button>
         <button class="year-btn" data-year="2023">2023</button>
-    </div>
-    <div class="countdown-section" id="countdown-2025">
-        <p class="countdown-text">¡ Fotos pronto !</p>
     </div>
     <div class="projects-grid">
         <!-- Project cards will be injected here by JavaScript -->
@@ -25,18 +22,11 @@ import projects2023 from '../data/projects/2023.json';
 </article>
 
 <script define:vars={{ projects2023, projects2024, projects2025 }}>
-    let currentYear = 2024;
+    let currentYear = 2025;
 
     function renderProjects(year) {
         const projectsGrid = document.querySelector('.projects-grid');
-        const countdownSection = document.getElementById('countdown-2025');
         if (!projectsGrid) return;
-        
-        // Show/hide countdown based on year
-        if (countdownSection) {
-            countdownSection.style.display = 'none';
-            //countdownSection.style.display = year === 2025 ? 'block' : 'none';
-        }
 
         projectsGrid.innerHTML = '';
 
@@ -153,59 +143,6 @@ import projects2023 from '../data/projects/2023.json';
         box-shadow: 0 0 20px rgba(241, 48, 0, 0.5);
     }
 
-    .countdown-section {
-        text-align: center;
-        margin: 2rem auto;
-        padding: 2rem;
-        background-color: rgb(27, 27, 27);
-        border-radius: 12px;
-        border: 2px solid #f13000;
-        max-width: 1000px;
-        width: 95%;
-    }
-
-    .countdown-text {
-        font-size: 2rem;
-        color: #cd2f07;
-        margin-bottom: 1.5rem;
-        font-family: 'Metal Mania', cursive;
-        letter-spacing: 1.2px;
-        white-space: nowrap;
-    }
-
-    .countdown-timer {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
-    }
-
-    .time-unit {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .time-value {
-        font-size: 3rem;
-        font-weight: bold;
-        color: #ffffff;
-        background-color: rgba(241, 48, 0, 0.2);
-        padding: 1rem 1.5rem;
-        border-radius: 8px;
-        border: 2px solid #f13000;
-        min-width: 80px;
-        box-shadow: 0 0 15px rgba(241, 48, 0, 0.3);
-    }
-
-    .time-label {
-        font-size: 1rem;
-        color: #ffffff;
-        margin-top: 0.5rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
     .proyectos-section :global(.projects-grid) {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -300,31 +237,6 @@ import projects2023 from '../data/projects/2023.json';
             font-size: 1rem;
         }
 
-        .countdown-section {
-            padding: 1.5rem;
-            margin: 1.5rem 1rem;
-        }
-
-        .countdown-text {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            white-space: normal;
-        }
-
-        .countdown-timer {
-            gap: 1rem;
-        }
-
-        .time-value {
-            font-size: 2rem;
-            padding: 0.75rem 1rem;
-            min-width: 60px;
-        }
-
-        .time-label {
-            font-size: 0.85rem;
-        }
-
         .proyectos-section :global(.projects-grid) {
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
@@ -373,31 +285,6 @@ import projects2023 from '../data/projects/2023.json';
         .year-btn {
             padding: 0.75rem 1.5rem;
             font-size: 1rem;
-        }
-
-        .countdown-section {
-            padding: 1rem;
-            margin: 1rem 0.5rem;
-        }
-
-        .countdown-text {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            white-space: normal;
-        }
-
-        .countdown-timer {
-            gap: 0.75rem;
-        }
-
-        .time-value {
-            font-size: 1.5rem;
-            padding: 0.5rem 0.75rem;
-            min-width: 50px;
-        }
-
-        .time-label {
-            font-size: 0.75rem;
         }
 
         .proyectos-section :global(.projects-grid) {

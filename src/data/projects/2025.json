@@ -1,1 +1,128 @@
-[]
+[
+    {
+        "id": "espejito-2025",
+        "slug": "espejito",
+        "title": "Espejito",
+        "description": "",
+        "thumbnail": "/projects/2025/espejito/espejito.jpg",
+        "year": 2025,
+        "images": [
+            "/projects/2025/espejito/espejito.jpg",
+            "/projects/2025/espejito/espejito-2.jpg",
+            "/projects/2025/espejito/espejito-3.jpg"
+        ]
+    },
+    {
+        "id": "mesa-de-tortura-2025",
+        "slug": "mesa-de-tortura",
+        "title": "Mesa de tortura",
+        "description": "",
+        "thumbnail": "/projects/2025/mesa-de-tortura/mesa-de-tortura.jpg",
+        "year": 2025,
+        "images": [
+            "/projects/2025/mesa-de-tortura/mesa-de-tortura.jpg",
+            "/projects/2025/mesa-de-tortura/mesa-de-tortura-2.jpg"
+        ]
+    },
+    {
+        "id": "novia-terrorifica-2025",
+        "slug": "novia-terrorifica",
+        "title": "Novia terrorífica",
+        "description": "",
+        "thumbnail": "/projects/2025/novia-terrorifica/novia-terrorifica.jpg",
+        "year": 2025,
+        "images": [
+            "/projects/2025/novia-terrorifica/novia-terrorifica.jpg",
+            "/projects/2025/boda/boda.jpg",
+            "/projects/2025/boda/boda-2.jpg",
+            "/projects/2025/boda/tarta-boda.jpg"
+        ]
+    },
+    {
+        "id": "boda-2025",
+        "slug": "boda",
+        "title": "Boda",
+        "description": "",
+        "thumbnail": "/projects/2025/boda/boda.jpg",
+        "year": 2025,
+        "images": [
+            "/projects/2025/boda/boda.jpg",
+            "/projects/2025/boda/boda-2.jpg",
+            "/projects/2025/boda/tarta-boda.jpg",
+            "/projects/2025/novia-terrorifica/novia-terrorifica.jpg"
+        ]
+    },
+    {
+        "id": "ouija-2025",
+        "slug": "ouija",
+        "title": "Ouija",
+        "description": "",
+        "thumbnail": "/projects/2025/ouija/ouija.jpg",
+        "year": 2025,
+        "images": [
+            "/projects/2025/ouija/ouija.jpg"
+        ]
+    },
+    {
+        "id": "wc-2025",
+        "slug": "wc",
+        "title": "WC",
+        "description": "",
+        "thumbnail": "/projects/2025/wc/wc.jpg",
+        "year": 2025,
+        "images": [
+            "/projects/2025/wc/wc.jpg",
+            "/projects/2025/wc/wc-2.jpg",
+            "/projects/2025/wc/wc-3.jpg"
+        ]
+    },
+    {
+        "id": "crucificado-2025",
+        "slug": "crucificado",
+        "title": "Crucificado",
+        "description": "",
+        "thumbnail": "/projects/2025/crucificado/crucificado.jpg",
+        "year": 2025,
+        "images": [
+            "/projects/2025/crucificado/crucificado.jpg",
+            "/projects/2025/crucificado/crucificado-2.jpg"
+        ]
+    },
+    {
+        "id": "esqueleto-jodido-2025",
+        "slug": "esqueleto-jodido",
+        "title": "Esqueleto jodido",
+        "description": "",
+        "thumbnail": "/projects/2025/esqueleto-jodido/esqueleto-jodido.jpg",
+        "year": 2025,
+        "images": [
+            "/projects/2025/esqueleto-jodido/esqueleto-jodido.jpg",
+            "/projects/2025/esqueleto-jodido/esqueleto-jodido-2.jpg",
+            "/projects/2025/esqueleto-jodido/esqueleto-jodido-3.jpg"
+        ]
+    },
+    {
+        "id": "tortura-aceitosa-2025",
+        "slug": "tortura-aceitosa",
+        "title": "Tortura aceitosa",
+        "description": "",
+        "thumbnail": "/projects/2025/tortura-aceitosa/tortura-aceitosa.jpg",
+        "year": 2025,
+        "images": [
+            "/projects/2025/tortura-aceitosa/tortura-aceitosa.jpg",
+            "/projects/2025/tortura-aceitosa/tortura-aceitosa-2.jpg",
+            "/projects/2025/tortura-aceitosa/tortura-aceitosa-3.jpg"
+        ]
+    },
+    {
+        "id": "tortura-2025",
+        "slug": "tortura",
+        "title": "Tortura",
+        "description": "",
+        "thumbnail": "/projects/2025/tortura/tortura.jpg",
+        "year": 2025,
+        "images": [
+            "/projects/2025/tortura/tortura.jpg"
+        ]
+    }
+]

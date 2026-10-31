@@ -6,6 +6,7 @@
     <div class="animate-fade-in-up">
         <h1>DECOTERROR</h1>
         <h2>Decoración artesanal de terror orientada a eventos</h2>
+        <p class="halloween-message" id="halloweenMessage">🎃 Hoy es Halloween, te esperamos!</p>
 
         <div class="buttons-wrapper">
             <div class="social-buttons">
@@ -67,6 +68,15 @@
                 });
             }
         });
+    }
+
+    const halloweenMessage = document.getElementById('halloweenMessage');
+    const today = new Date();
+    const isHalloween = today.getDate() === 31 && today.getMonth() === 9;
+
+    if (halloweenMessage && isHalloween) {
+        halloweenMessage.classList.add('visible');
+        document.body.classList.add('halloween-day');
     }
 </script>
 
@@ -152,6 +162,30 @@
         inset: 0;
         background: rgba(0, 0, 0, 0.25);
         pointer-events: none;
+        transition: background 0.6s ease;
+    }
+
+    :global(body.halloween-day) section::before {
+        background: rgba(0, 0, 0, 0.35);
+    }
+
+    :global(body.halloween-day) h1 {
+        animation: halloweenGlow 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes halloweenGlow {
+        from {
+            text-shadow:
+                0 0 20px rgba(205, 37, 16, 0.6),
+                4px 4px 8px rgba(101, 0, 0, 0.9),
+                8px 10px 10px rgba(0, 0, 0, 0.8);
+        }
+        to {
+            text-shadow:
+                0 0 40px rgba(255, 100, 0, 0.9),
+                4px 4px 8px rgba(101, 0, 0, 0.9),
+                8px 10px 10px rgba(0, 0, 0, 0.8);
+        }
     }
 
     h1 {
@@ -194,6 +228,34 @@
         margin: 0;
         position: relative;
         z-index: 1;
+    }
+
+    .halloween-message {
+        display: none;
+        font-size: clamp(1.2rem, 4vw, 1.8rem);
+        color: #ff8c00;
+        font-family: "Metal Mania", system-ui;
+        text-align: center;
+        margin: 1rem 0 0;
+        text-shadow: 0 0 12px rgba(255, 140, 0, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.9);
+        animation: halloweenPulse 2s ease-in-out infinite;
+        position: relative;
+        z-index: 1;
+    }
+
+    .halloween-message.visible {
+        display: block;
+    }
+
+    @keyframes halloweenPulse {
+        0%, 100% {
+            transform: scale(1);
+            text-shadow: 0 0 12px rgba(255, 140, 0, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.9);
+        }
+        50% {
+            transform: scale(1.03);
+            text-shadow: 0 0 24px rgba(255, 140, 0, 1), 2px 2px 4px rgba(0, 0, 0, 0.9);
+        }
     }
 
     .buttons-wrapper {
@@ -416,6 +478,11 @@
             font-size: clamp(0.7rem, 4.5vw, 1.4rem);
             margin-top: 1rem;
             padding: 0 0.5rem;
+        }
+
+        .halloween-message {
+            font-size: clamp(1rem, 4vw, 1.4rem);
+            margin-top: 0.75rem;
         }
 
         .construction-badge {
