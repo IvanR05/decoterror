@@ -38,13 +38,14 @@ import projects2023 from '../data/projects/2023.json';
 
 
         projectsMap[year]?.forEach(project => {
-            let div = document.createElement('div');
+            let div = document.createElement('a');
             div.className = 'project-card';
+            div.setAttribute("href", `/proyectos/${project.slug}`)
             div.innerHTML = `
                 <a href="/proyectos/${project.slug}" class="project-link">
                     <img src="${project.thumbnail}" alt="${project.title}" loading="lazy">
-                    <h3>${project.title}</h3>
                 </a>
+                <h3>${project.title}</h3>
             `;
             projectsGrid.appendChild(div);
         });
@@ -162,6 +163,8 @@ import projects2023 from '../data/projects/2023.json';
         min-height: 350px;
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         box-sizing: border-box;
     }
 
@@ -170,7 +173,7 @@ import projects2023 from '../data/projects/2023.json';
         color: inherit;
         display: flex;
         flex-direction: column;
-        height: 100%;
+        /*height: 100%;*/
         transition: all 0.3s ease;
     }
 
